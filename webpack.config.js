@@ -11,6 +11,9 @@ module.exports = {
     static: './src',
     open: true
   },
+  resolve: {
+    extensions: ['', '.js', '.jsx']
+  },
   plugins: [
     new HtmlWebpackPlugin({
       title: 'Development',
@@ -38,6 +41,13 @@ module.exports = {
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/i,
         type: 'asset/resource'
+      },
+      {
+        test: /\.(js|jsx)$/,
+        include: path.resolve(__dirname, 'src'),
+        use: {
+          loader: 'babel-loader',
+        }
       }
     ],
   },

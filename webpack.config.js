@@ -9,7 +9,8 @@ module.exports = {
   devtool: 'inline-source-map',
   devServer: {
     static: './src',
-    open: true
+    open: true,
+    historyApiFallback: true
   },
   resolve: {
     extensions: ['', '.js', '.jsx']
@@ -23,6 +24,7 @@ module.exports = {
   output: {
     filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'dist'),
+    publicPath: '/',
     clean: true
   },
   optimization: {
@@ -35,8 +37,13 @@ module.exports = {
         use: ['style-loader', 'css-loader']
       },
       {
-        test: /\.(png|svg|jpg|jpef|gif)$/i,
+        test: /\.(png|jpg|jpef|gif)$/i,
         type: 'asset/resource'
+      },
+      {
+        test: /\.svg$/i,
+        issuer: /\.[jt]sx?$/,
+        use: ['@svgr/webpack']
       },
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/i,

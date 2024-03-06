@@ -9,7 +9,7 @@
     "start": "webpack server --open",
     "build": "webpack"
   },
-  "author": "Yura barykin",
+  "author": "Yura Barykin",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.23.2",
